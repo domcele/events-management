@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 const App = () => {
-  const [students, setStudents] = useState([]);
+  const [eventUsers, setEventUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/students")
+    fetch("http://localhost:3000/eventUsers")
       .then((resp) => resp.json())
       .then((response) => {
         console.log(response);
-        setStudents(response);
+        setEventUsers(response);
       })
       .catch((error) => {
         console.error(error);
@@ -17,10 +17,10 @@ const App = () => {
 
   return (
     <div>
-      {students.map((student) => (
-        <div key={student._id}>
+      {eventUsers.map((eventUser) => (
+        <div key={eventUser._id}>
           {" "}
-          {student.name} studies in: {student.uni}
+          name: {eventUser.name} email: {eventUser.email} age: {eventUser.age}
         </div>
       ))}
     </div>
