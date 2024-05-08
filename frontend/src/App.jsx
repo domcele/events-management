@@ -1,28 +1,11 @@
-import { useState, useEffect } from "react";
+import AppRoutes from "./routes/AppRoutes";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 const App = () => {
-  const [eventUsers, setEventUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/eventUsers")
-      .then((resp) => resp.json())
-      .then((response) => {
-        console.log(response);
-        setEventUsers(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
   return (
     <div>
-      {eventUsers.map((eventUser) => (
-        <div key={eventUser._id}>
-          {" "}
-          name: {eventUser.name} email: {eventUser.email} age: {eventUser.age}
-        </div>
-      ))}
+      <AppRoutes />
+      <NavigationBar />
     </div>
   );
 };
