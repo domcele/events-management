@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   try {
     const data = await client
       .db("MyDatabase")
-      .collection("eventUsers")
+      .collection("events")
       .find()
       .toArray();
     res.send(data);
@@ -22,19 +22,19 @@ router.get("/", async (req, res) => {
   try {
     const data = await client
       .db("MyDatabase")
-      .collection("eventUsers")
+      .collection("events")
       .aggregate([
         {
           $lookup: {
-            from: "events",
-            localField: "eventId",
+            from: "eventUsers",
+            localField: "userId",
             foreignField: "_id",
-            as: "event",
+            as: "user",
           },
         },
         {
           $unwind: {
-            path: "$event",
+            path: "$user",
             preserveNullAndEmptyArrays: true,
           },
         },
@@ -50,11 +50,11 @@ router.post("/", async (req, res) => {
   try {
     const newUser = {
       ...req.body,
-      eventId: new ObjectId(`${req.body.eventId}`),
+      eventId: new ObjectId(`${req.body.userId}`),
     };
     const dbRes = await client
       .db("MyDatabase")
-      .collection("eventUsers")
+      .collection("events")
       .insertOne(newUser);
     res.send(dbRes);
   } catch (err) {
@@ -67,7 +67,7 @@ router.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const data = await client
       .db("MyDatabase")
-      .collection("eventUsers")
+      .collection("events")
       .deleteOne({ _id: new ObjectId(id) });
     res.send(data);
   } catch (error) {

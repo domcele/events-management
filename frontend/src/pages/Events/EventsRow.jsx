@@ -1,33 +1,14 @@
 import PropTypes from "prop-types";
 import { Link, generatePath } from "react-router-dom";
 import { ROUTES } from "../../routes/consts";
-import { useState, useEffect } from "react";
 
 const EventsRow = ({ event }) => {
-  const orderPath = generatePath(ROUTES.EVENTS, { id: event.id });
-  const [eventUsers, setEventUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/eventUsers")
-      .then((resp) => resp.json())
-      .then((response) => {
-        console.log(response);
-        setEventUsers(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const orderPath = generatePath(ROUTES.EVENT, { id: event._id });
 
   return (
     <div>
       <Link to={orderPath}>
-        {eventUsers.map((eventUser) => (
-          <div key={eventUser._id}>
-            {" "}
-            name: {eventUser.name} email: {eventUser.email} age: {eventUser.age}
-          </div>
-        ))}
+        <h3>{event.name}</h3>
       </Link>
     </div>
   );
@@ -35,7 +16,8 @@ const EventsRow = ({ event }) => {
 
 EventsRow.propTypes = {
   event: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }),
 };
 

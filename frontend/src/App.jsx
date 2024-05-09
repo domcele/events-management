@@ -4,8 +4,8 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 const App = () => {
   return (
     <div>
-      <AppRoutes />
       <NavigationBar />
+      <AppRoutes />
     </div>
   );
 };

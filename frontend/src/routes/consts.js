@@ -4,6 +4,7 @@ import Events from "../pages/Events/Events";
 export const ROUTES = {
   HOME: "/",
   EVENTS: "/events",
+  EVENT: "/events/:id",
 };
 
 export const routes = [
@@ -15,15 +16,19 @@ export const routes = [
     path: ROUTES.EVENTS,
     Component: Events,
   },
+  {
+    path: ROUTES.EVENT,
+    Component: Event,
+  },
 ];
 
 export const navigationBarLinks = [
   {
     title: "Home",
-    path: ROUTES.Home,
+    path: ROUTES.HOME,
   },
   {
     title: "Events",
-    path: ROUTES.Events,
+    path: ROUTES.EVENTS,
   },
 ];

@@ -8,7 +8,8 @@ app.use(express.json()); // must
 app.use(cors()); // must
 const port = process.env.PORT || 8080;
 
-app.use("/eventUsers", eventUserRoutes);
+// app.use("/eventUsers", eventUserRoutes);
+app.use("/events", eventUserRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on ${port} port`);
