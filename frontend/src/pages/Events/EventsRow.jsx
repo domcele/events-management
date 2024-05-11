@@ -8,7 +8,9 @@ const EventsRow = ({ event }) => {
   return (
     <div>
       <Link to={orderPath}>
-        <h3>{event.name}</h3>
+        <h3>
+          {event.name} {event.location}
+        </h3>
       </Link>
     </div>
   );
@@ -18,6 +20,7 @@ EventsRow.propTypes = {
   event: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
   }),
 };
 

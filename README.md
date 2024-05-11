@@ -13,3 +13,5 @@ Events management is about organizing trainings, holidays, conferences for compa
   > CRUD operacijos (registracijos formoje galima sukurti vartotoją, lentelėje matyti, atnaujinti ir ištrinti vartotojus);
   > Duomenų saugojimas (vartotojai saugomi duomenų bazėje). Jeigu naudojate MySQL duomenų bazę būtina sukurti sąryšius tarp lentelių ir naudoti "Primary Key" bei "Foreign Key" apribojimus.
   > Dizainas. Dizainą sukurkite patys, tačiau minimalus dizainas būtinas.
+
+- Tarp EventsRow - bus sudedama struktura
