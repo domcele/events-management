@@ -8,10 +8,9 @@ const EventsRow = ({ event }) => {
   return (
     <div>
       <Link to={orderPath}>
-        <h3>
-          {event.name} {event.location}
-        </h3>
+        <h3>{event.name}</h3>
       </Link>
+      <div>{event.location}</div>
     </div>
   );
 };

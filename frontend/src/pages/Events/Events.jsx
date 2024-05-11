@@ -1,4 +1,3 @@
-// import EventsRow from "./EventsRow";
 import { useState, useEffect } from "react";
 import EventsRow from "./EventsRow";
 

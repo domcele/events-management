@@ -18,6 +18,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/events/:id", async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const data = await client
+      .db("MyDatabase")
+      .collection("events")
+      .findOne({ _id: new ObjectId(eventId) });
+    if (!data) {
+      return res.status(404).send({ error: "Event not found" });
+    }
+    res.send(data);
+  } catch (error) {
+    return res.status(500).send({ error });
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const data = await client

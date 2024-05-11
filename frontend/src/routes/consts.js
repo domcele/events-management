@@ -1,5 +1,6 @@
 import Home from "../pages/Home/Home";
 import Events from "../pages/Events/Events";
+import Event from "../pages/Event/Event";
 
 export const ROUTES = {
   HOME: "/",
