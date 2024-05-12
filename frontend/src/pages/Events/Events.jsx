@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
 import EventsRow from "./EventsRow";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3000/events")
@@ -26,7 +29,9 @@ const Events = () => {
           </div>
         ))}
       </div>
-      ;
+      <button onClick={() => navigate(ROUTES.NEW_USER)}>
+        Create new Event
+      </button>
     </div>
   );
 };
