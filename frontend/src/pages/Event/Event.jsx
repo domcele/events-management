@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 const Event = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
+  const [eventUsers, setEventUsers] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/events/${id}`)
@@ -11,6 +12,18 @@ const Event = () => {
       .then((response) => {
         console.log(response);
         setEvent(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/events/${id}/users`) // Fetch event users based on the event ID
+      .then((resp) => resp.json())
+      .then((response) => {
+        console.log(response);
+        setEventUsers(response);
       })
       .catch((error) => {
         console.error(error);
@@ -32,7 +45,14 @@ const Event = () => {
         <p>Location: {event.location}</p>
         <p>Date: {event.date}</p>
         <p>Price: {event.price}</p>
-        {/* You can add more event details here */}
+        <ul>
+          {eventUsers.map((event) => (
+            <li key={event._id}>
+              Name: {event.users.name}, Email: {event.users.email}, Age:
+              {event.users.age}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

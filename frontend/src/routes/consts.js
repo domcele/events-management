@@ -7,7 +7,7 @@ export const ROUTES = {
   HOME: "/",
   EVENTS: "/events",
   EVENT: "/events/:id",
-  NEW_EVENT: "/events/new-user",
+  NEW_EVENT: "/events/new-event",
 };
 
 export const routes = [
