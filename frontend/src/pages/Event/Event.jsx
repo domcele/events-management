@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Event = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [eventUsers, setEventUsers] = useState([]);
@@ -40,19 +43,23 @@ const Event = () => {
 
   return (
     <>
+      <button onClick={() => navigate(ROUTES.NEW_USER)}>Add user</button>
       <h2>{event.name}</h2>
       <div>
         <p>Location: {event.location}</p>
         <p>Date: {event.date}</p>
         <p>Price: {event.price}</p>
-        <ul>
-          {eventUsers.map((event) => (
-            <li key={event._id}>
-              Name: {event.users.name}, Email: {event.users.email}, Age:
-              {event.users.age}
-            </li>
-          ))}
-        </ul>
+        {eventUsers.length > 0 ? (
+          <ul>
+            {eventUsers.map((user) => (
+              <li key={user._id}>
+                Name: {user.name}, Email: {user.email}, Age: {user.age}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No users</p>
+        )}
       </div>
     </>
   );

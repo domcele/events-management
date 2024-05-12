@@ -19,3 +19,18 @@ export const deleteEvent = async (id) => {
   });
   return await response.json();
 };
+
+export const createUser = async (id, user) => {
+  try {
+    const response = await fetch(`${API}/events/${id}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    return await response.json();
+  } catch (error) {
+    throw new Error("Error creating user:", error);
+  }
+};
