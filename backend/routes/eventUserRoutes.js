@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
     const data = await client
       .db("MyDatabase")
       .collection("events")
-      .findOne({ _id: ObjectId(id) });
+      .findOne({ _id: new ObjectId(id) });
     res.send(data);
   } catch (error) {
     res.status(500).send({ error: error.message });
