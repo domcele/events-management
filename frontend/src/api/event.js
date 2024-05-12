@@ -12,3 +12,10 @@ export const createEvent = async (event) => {
   });
   return await response.json();
 };
+
+export const deleteEvent = async (id) => {
+  const response = await fetch(`${API}/events/${id}`, {
+    method: "DELETE",
+  });
+  return await response.json();
+};

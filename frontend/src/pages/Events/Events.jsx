@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
+import { deleteEvent } from "../../api/event";
 import EventsRow from "./EventsRow";
 
 const Events = () => {
@@ -19,6 +20,15 @@ const Events = () => {
       });
   }, []);
 
+  const handleDeleteEvent = async (id) => {
+    try {
+      await deleteEvent(id);
+      setEvents((prevEvents) => prevEvents.filter((event) => event._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -26,6 +36,7 @@ const Events = () => {
           <div key={event._id}>
             {" "}
             <EventsRow event={event} />
+            <button onClick={() => handleDeleteEvent(event._id)}>delete</button>
           </div>
         ))}
       </div>
