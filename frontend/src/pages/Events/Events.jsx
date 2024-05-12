@@ -29,7 +29,7 @@ const Events = () => {
           </div>
         ))}
       </div>
-      <button onClick={() => navigate(ROUTES.NEW_USER)}>
+      <button onClick={() => navigate(ROUTES.NEW_EVENT)}>
         Create new Event
       </button>
     </div>

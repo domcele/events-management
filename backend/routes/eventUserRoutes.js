@@ -63,17 +63,14 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const newUser = {
-      ...req.body,
-      eventId: new ObjectId(`${req.body.userId}`),
-    };
+    const newEvent = req.body;
     const dbRes = await client
       .db("MyDatabase")
       .collection("events")
-      .insertOne(newUser);
+      .insertOne(newEvent);
     res.send(dbRes);
   } catch (err) {
-    res.status(500).send({ err });
+    res.status(500).send({ error });
   }
 });
 
