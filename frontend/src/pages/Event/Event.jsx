@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { deleteUser } from "../../api/event";
 import { useParams } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import styles from "./event.module.scss";
 
 const Event = () => {
   const { id } = useParams();
@@ -53,29 +55,44 @@ const Event = () => {
   }
 
   return (
-    <>
-      <Link to={`${ROUTES.NEW_USER.replace(":id", id)}`}>Add user</Link>
-      <h2>{event.name}</h2>
-      <div>
-        <p>Location: {event.location}</p>
-        <p>Date: {event.date}</p>
-        <p>Price: {event.price}</p>
-        {eventUsers.length > 0 ? (
-          <ul>
-            {eventUsers.map((user) => (
-              <li key={user._id}>
-                Name: {user.name}, Email: {user.email}, Age: {user.age}
-                <button onClick={() => handleDeleteUser(user._id)}>
-                  delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No users</p>
-        )}
+    <div className={styles.eventContainer}>
+      <Link
+        className={styles.eventButton}
+        to={`${ROUTES.NEW_USER.replace(":id", id)}`}
+      >
+        Add user
+      </Link>
+      <div className={styles.card}>
+        <h2>{event.name}</h2>
+        <div className={styles.cardContent}>
+          <p className={styles.eventInfo}>Location: {event.location}</p>
+          <p className={styles.eventInfo}>Date: {event.date}</p>
+          <p className={styles.eventInfo}>Price: {event.price}</p>
+          {eventUsers.length > 0 ? (
+            <ul className={styles.eventUserInfo}>
+              {eventUsers.map((user) => (
+                <li key={user._id}>
+                  <div>
+                    Name: {user.name}, Email: {user.email}, Age: {user.age}
+                  </div>
+                  <div>
+                    <Button
+                      color="alert"
+                      onClick={() => handleDeleteUser(user._id)}
+                      className={styles.deleteButton}
+                    >
+                      delete
+                    </Button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No users</p>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

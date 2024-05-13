@@ -1,18 +1,20 @@
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import styles from "./Button.module.scss";
 
-const Button = ({ children, className = "", ...props }) => {
+const Button = ({ onClick, children, color }) => {
+  const buttonClassName = `${styles.button} ${styles[color]}`;
+
   return (
-    <button className={classNames(styles.button, className)} {...props}>
+    <button className={buttonClassName} onClick={onClick}>
       {children}
     </button>
   );
 };
 
 Button.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(["primary", "secondary", "alert"]).isRequired,
 };
 
 export default Button;

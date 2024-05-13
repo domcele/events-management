@@ -3,6 +3,8 @@ import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
 import { deleteEvent } from "../../api/event";
 import EventsRow from "./EventsRow";
+import Button from "../../components/Button/Button";
+import styles from "./events.module.scss";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -12,7 +14,6 @@ const Events = () => {
     fetch("http://localhost:3000/events")
       .then((resp) => resp.json())
       .then((response) => {
-        console.log(response);
         setEvents(response);
       })
       .catch((error) => {
@@ -31,18 +32,30 @@ const Events = () => {
 
   return (
     <div>
-      <div>
+      <div className={styles.eventContainer}>
+        <div className={styles.eventButton}>
+          <Button color="secondary" onClick={() => navigate(ROUTES.NEW_EVENT)}>
+            Create New Event
+          </Button>
+        </div>
         {events.map((event) => (
-          <div key={event._id}>
-            {" "}
-            <EventsRow event={event} />
-            <button onClick={() => handleDeleteEvent(event._id)}>delete</button>
+          <div className={styles.card} key={event._id}>
+            <div className={styles.cardContent}>
+              <div className={styles.eventInfo}>
+                <EventsRow event={event} />
+              </div>
+              <div className={styles.deleteButton}>
+                <Button
+                  color="alert"
+                  onClick={() => handleDeleteEvent(event._id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-      <button onClick={() => navigate(ROUTES.NEW_EVENT)}>
-        Create new Event
-      </button>
     </div>
   );
 };

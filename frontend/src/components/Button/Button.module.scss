@@ -1,14 +1,28 @@
+@import "../../styles/_colors.scss";
+
 .button {
-  background-color: black;
-  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
-
   &:focus {
     outline: none;
   }
+}
+
+.primary {
+  background-color: $primary-color;
+  color: white;
+}
+
+.secondary {
+  background-color: $button-color;
+  color: white;
+}
+
+.alert {
+  background-color: $alert-color;
+  color: white;
 }

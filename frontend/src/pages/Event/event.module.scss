@@ -1,0 +1,83 @@
+@import "../../styles/_colors.scss";
+
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 60px 10px 60px; /* Default margin for mobile */
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: $secondary-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column; /* Change to column layout for mobile */
+}
+
+.eventInfo {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 8px;
+  padding: 8px; /* Add padding for better spacing */
+}
+
+.eventUserInfo {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 8px;
+  padding: 8px; /* Add padding for better spacing */
+
+  li {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.deleteButton {
+  justify-content: end; /* Align delete button or event button to the end (right) of the card */
+  margin-top: 10px; /* Add some spacing between delete button and event info */
+  margin: 10px 0; /* Add some spacing between delete button and event info */
+}
+
+.eventButton {
+  align-self: flex-end; /* Align delete button or event button to the end (right) of the card */
+  margin-top: 10px; /* Add some spacing between delete button and event info */
+  margin: 10px 0; /* Add some spacing between delete button and event info */
+  border: none;
+  background-color: rgb(22, 12, 40);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (min-width: 768px) {
+  /* For tablets */
+  .eventContainer {
+    margin: 0 60px 10px 60px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* For desktops */
+  .eventContainer {
+    margin: 0 200px 10px 200px;
+  }
+}
