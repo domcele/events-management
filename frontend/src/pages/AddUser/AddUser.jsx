@@ -1,52 +1,74 @@
-import { useNavigate } from "react-router-dom";
-import { createUser } from "../../api/event";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { ROUTES } from "../../routes/consts";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { createUser } from "../../api/event"; // Assuming the path to your API functions
 
 const AddUser = () => {
-  const { id } = useParams();
-  const [event, setEvent] = useState(null);
-  const navigate = useNavigate();
+  const { id } = useParams(); // Extract event ID from URL params
+  const navigate = useNavigate(); // Hook for navigation
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    age: "",
+  });
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/events/${id}`)
-      .then((resp) => resp.json())
-      .then((response) => {
-        console.log(response);
-        setEvent(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [id]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, age } = e.target;
-    const user = {
-      name: name.value,
-      email: email.value,
-      age: age.value,
-    };
     try {
-      await createUser(id, user); // Pass the event ID extracted from URL
-      navigate(ROUTES.HOME);
+      await createUser(id, user); // Call API function to create user
+      navigate(`/events/${id}`); // Redirect to event page after user creation
     } catch (error) {
-      console.error(error);
+      console.error("Error creating user:", error);
     }
   };
 
   return (
-    <>
-      <h2>{event.name}</h2>
+    <div>
+      <h2>Add User</h2>
       <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Name" />
-        <input name="email" placeholder="Email" />
-        <input name="age" placeholder="Age" />
-        <button type="submit">Create new user</button>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="age">Age:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            value={user.age}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Add User</button>
       </form>
-    </>
+    </div>
   );
 };
 

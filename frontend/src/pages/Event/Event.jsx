@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const Event = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [eventUsers, setEventUsers] = useState([]);
@@ -43,7 +42,7 @@ const Event = () => {
 
   return (
     <>
-      <button onClick={() => navigate(ROUTES.NEW_USER)}>Add user</button>
+      <Link to={`${ROUTES.NEW_USER.replace(":id", id)}`}>Add user</Link>
       <h2>{event.name}</h2>
       <div>
         <p>Location: {event.location}</p>

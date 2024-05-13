@@ -22,7 +22,7 @@ export const deleteEvent = async (id) => {
 
 export const createUser = async (id, user) => {
   try {
-    const response = await fetch(`${API}/events/${id}/users`, {
+    const response = await fetch(`${API}/events/${id}/new-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

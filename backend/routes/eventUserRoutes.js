@@ -87,7 +87,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.post("/:id/users", async (req, res) => {
+router.post("/:id/new-user", async (req, res) => {
   const eventId = req.params.id;
   const userData = req.body;
 

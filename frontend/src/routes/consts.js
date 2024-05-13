@@ -9,7 +9,7 @@ export const ROUTES = {
   EVENTS: "/events",
   EVENT: "/events/:id",
   NEW_EVENT: "/events/new-event",
-  NEW_USER: "/events/new-user/:id",
+  NEW_USER: "/events/:id/new-user",
 };
 
 export const routes = [
