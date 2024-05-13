@@ -34,3 +34,10 @@ export const createUser = async (id, user) => {
     throw new Error("Error creating user:", error);
   }
 };
+
+export const deleteUser = async (id, userId) => {
+  const response = await fetch(`${API}/events/${id}/users/${userId}`, {
+    method: "DELETE",
+  });
+  return await response.json();
+};

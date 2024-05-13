@@ -1,6 +1,7 @@
 import { ROUTES } from "../../routes/consts";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { deleteUser } from "../../api/event";
 import { useParams } from "react-router-dom";
 
 const Event = () => {
@@ -32,6 +33,17 @@ const Event = () => {
       });
   }, [id]);
 
+  const handleDeleteUser = async (userId) => {
+    try {
+      await deleteUser(id, userId); // Pass both event ID and user ID
+      setEventUsers((prevUsers) =>
+        prevUsers.filter((user) => user._id !== userId)
+      ); // Filter users based on user ID
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!event) {
     return (
       <p>
@@ -53,6 +65,9 @@ const Event = () => {
             {eventUsers.map((user) => (
               <li key={user._id}>
                 Name: {user.name}, Email: {user.email}, Age: {user.age}
+                <button onClick={() => handleDeleteUser(user._id)}>
+                  delete
+                </button>
               </li>
             ))}
           </ul>
