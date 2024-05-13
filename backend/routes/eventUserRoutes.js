@@ -87,6 +87,30 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id/users/:userId", async (req, res) => {
+  const { id, userId } = req.params;
+
+  try {
+    // Remove the user ID from the users array of the event document
+    const data = await client
+      .db("MyDatabase")
+      .collection("events")
+      .updateOne(
+        { _id: new ObjectId(id) },
+        { $pull: { users: new ObjectId(userId) } } // Assuming userId is stored as a string
+      );
+
+    if (data.modifiedCount === 0) {
+      return res.status(404).send({ error: "Event or user not found" });
+    }
+
+    res.status(200).send({ message: "User removed from event" });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
 router.post("/:id/new-user", async (req, res) => {
   const eventId = req.params.id;
   const userData = req.body;
