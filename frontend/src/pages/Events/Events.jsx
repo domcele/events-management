@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { deleteEvent } from "../../api/event";
 import EventsRow from "./EventsRow";
 import Button from "../../components/Button/Button";
-import styles from "./events.module.scss";
+import styles from "./Events.module.scss";
 
 const Events = () => {
   const [events, setEvents] = useState([]);

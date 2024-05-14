@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { createEvent } from "../../api/event";
 import { ROUTES } from "../../routes/consts";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
+import styles from "./AddEvent.module.scss";
 
 const AddEvent = () => {
   const navigate = useNavigate();
@@ -23,13 +26,27 @@ const AddEvent = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="name" placeholder="Name" />
-      <input name="date" placeholder="Date" />
-      <input name="location" placeholder="Location" />
-      <input name="price" placeholder="Price" />
-      <button type="submit">Create new Event</button>
-    </form>
+    <div className={styles.addEventContainer}>
+      <form className={styles.addEventForm} onSubmit={handleSubmit}>
+        <h2 className={styles.addEventTitle}>Add Event</h2>
+        <Input type="text" id="name" name="name" label="Name" required />
+        <Input type="date" id="date" name="date" label="Date" required />
+        <Input
+          type="text"
+          id="location"
+          name="location"
+          label="Location"
+          required
+        />
+        <Input type="number" id="price" name="price" label="Price" required />
+        <Input type="text" id="url" name="imgUrl" label="Image URL" required />
+        <div className={styles.buttonContainer}>
+          <Button color="secondary" type="submit">
+            Create new Event
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 };
 

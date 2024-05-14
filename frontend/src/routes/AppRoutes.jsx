@@ -4,8 +4,14 @@ import { routes } from "./consts";
 const AppRoutes = () => {
   return (
     <Routes>
-      {routes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} />
+      {routes.map(({ path, Layout, Component }) => (
+        <Route
+          key={path}
+          path={path}
+          element=<Layout>
+            <Component />
+          </Layout>
+        />
       ))}
     </Routes>
   );

@@ -1,0 +1,54 @@
+.addUserContainer {
+  max-width: 400px;
+  margin: 100px auto 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.addUserTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.addUserForm {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 0 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  /* For tablets */
+  .addUserContainer {
+    max-width: 600px;
+  }
+
+  .addUserForm {
+    padding: 0 80px 0 80px;
+  }
+
+  .addUserTitle {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* For desktops */
+  .addUserContainer {
+    max-width: 800px;
+  }
+
+  .addUserForm {
+    padding: 0 150px 0 150px;
+  }
+
+  .addUserTitle {
+    font-size: 32px;
+  }
+}

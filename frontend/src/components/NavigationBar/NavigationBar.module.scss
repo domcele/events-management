@@ -22,9 +22,14 @@
   .nav {
     display: flex;
     gap: 2rem;
+    align-items: center;
 
     a {
       font-size: 1.2rem;
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -1,0 +1,54 @@
+.addEventContainer {
+  max-width: 400px;
+  margin: 100px auto 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.addEventTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.addEventForm {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 0 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  /* For tablets */
+  .addEventContainer {
+    max-width: 600px;
+  }
+
+  .addEventForm {
+    padding: 0 80px 0 80px;
+  }
+
+  .addEventTitle {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* For desktops */
+  .addEventContainer {
+    max-width: 800px;
+  }
+
+  .addEventForm {
+    padding: 0 150px 0 150px;
+  }
+
+  .addEventTitle {
+    font-size: 32px;
+  }
+}

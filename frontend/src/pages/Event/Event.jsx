@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { deleteUser } from "../../api/event";
 import { useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import styles from "./event.module.scss";
+import styles from "./Event.module.scss";
 
 const Event = () => {
   const { id } = useParams();
@@ -65,6 +65,7 @@ const Event = () => {
       <div className={styles.card}>
         <h2>{event.name}</h2>
         <div className={styles.cardContent}>
+          <img src={event.image} alt={event.name} />
           <p className={styles.eventInfo}>Location: {event.location}</p>
           <p className={styles.eventInfo}>Date: {event.date}</p>
           <p className={styles.eventInfo}>Price: {event.price}</p>

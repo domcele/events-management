@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { createUser } from "../../api/event"; // Assuming the path to your API functions
+import { createUser } from "../../api/event";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
+import styles from "./AddUser.module.scss";
 
 const AddUser = () => {
-  const { id } = useParams(); // Extract event ID from URL params
-  const navigate = useNavigate(); // Hook for navigation
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -30,43 +33,41 @@ const AddUser = () => {
   };
 
   return (
-    <div>
-      <h2>Add User</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={user.name}
-            onChange={handleChange}
-            required
-          />
+    <div className={styles.addUserContainer}>
+      <form onSubmit={handleSubmit} className={styles.addUserForm}>
+        <h2 className={styles.addUserTitle}>Add User</h2>
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          label="Name"
+          value={user.name}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          label="Email"
+          value={user.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="number"
+          id="age"
+          name="age"
+          label="Age"
+          value={user.age}
+          onChange={handleChange}
+          required
+        />
+        <div className={styles.buttonContainer}>
+          <Button color="secondary" type="submit">
+            Add User
+          </Button>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="age">Age:</label>
-          <input
-            type="number"
-            id="age"
-            name="age"
-            value={user.age}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Add User</button>
       </form>
     </div>
   );
