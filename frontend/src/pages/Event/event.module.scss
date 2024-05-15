@@ -1,0 +1,82 @@
+@import "../../styles/_colors.scss";
+
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 60px 10px 60px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: $secondary-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventInfo {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.eventUserInfo {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  li {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.deleteButton {
+  justify-content: end;
+  margin-top: 10px;
+  margin: 10px 0;
+}
+
+.eventButton {
+  align-self: flex-end;
+  margin-top: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: rgb(22, 12, 40);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (min-width: 768px) {
+  /* For tablets */
+  .eventContainer {
+    margin: 0 60px 10px 60px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* For desktops */
+  .eventContainer {
+    margin: 0 200px 10px 200px;
+  }
+}
