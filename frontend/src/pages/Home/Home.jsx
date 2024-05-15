@@ -1,7 +1,7 @@
 // import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 const Home = () => {
-  return <div>zdarof</div>;
+  return <div>Sveiki</div>;
 };
 
 export default Home;

@@ -25,8 +25,8 @@ const AddUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createUser(id, user); // Call API function to create user
-      navigate(`/events/${id}`); // Redirect to event page after user creation
+      await createUser(id, user);
+      navigate(`/events/${id}`);
     } catch (error) {
       console.error("Error creating user:", error);
     }
@@ -64,7 +64,7 @@ const AddUser = () => {
           required
         />
         <div className={styles.buttonContainer}>
-          <Button color="secondary" type="submit">
+          <Button color="secondary" type="submit" onClick={() => {}}>
             Add User
           </Button>
         </div>

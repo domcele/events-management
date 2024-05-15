@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../routes/consts";
 import CalendarLogo from "../../assets/calendar-logo.png";
 import styles from "./NavigationBar.module.scss";
 import { navigationBarLinks } from "../../routes/consts";
 import Button from "../Button/Button";
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate(ROUTES.LOGIN);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -16,7 +23,9 @@ const NavigationBar = () => {
             {link.title}
           </Link>
         ))}
-        <Button color="third">Log Out</Button>
+        <Button color="third" onClick={handleLogout}>
+          Log Out
+        </Button>
       </nav>
     </header>
   );

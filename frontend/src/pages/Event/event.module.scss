@@ -3,7 +3,7 @@
 .eventContainer {
   display: flex;
   flex-direction: column;
-  margin: 0 60px 10px 60px; /* Default margin for mobile */
+  margin: 0 60px 10px 60px;
 }
 
 .card {
@@ -17,26 +17,25 @@
 
 .cardContent {
   display: flex;
-  flex-direction: column; /* Change to column layout for mobile */
+  flex-direction: column;
 }
 
 .eventInfo {
   margin-bottom: 10px;
   font-size: 16px;
   color: #333;
-  border: 1px solid #ccc; /* Add border */
+  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 8px; /* Add padding for better spacing */
+  padding: 8px;
 }
 
 .eventUserInfo {
   margin-bottom: 10px;
   font-size: 16px;
   color: #333;
-  border: 1px solid #ccc; /* Add border */
+  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 8px; /* Add padding for better spacing */
-
+  padding: 8px;
   li {
     margin-top: 5px;
     display: flex;
@@ -46,15 +45,15 @@
 }
 
 .deleteButton {
-  justify-content: end; /* Align delete button or event button to the end (right) of the card */
-  margin-top: 10px; /* Add some spacing between delete button and event info */
-  margin: 10px 0; /* Add some spacing between delete button and event info */
+  justify-content: end;
+  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .eventButton {
-  align-self: flex-end; /* Align delete button or event button to the end (right) of the card */
-  margin-top: 10px; /* Add some spacing between delete button and event info */
-  margin: 10px 0; /* Add some spacing between delete button and event info */
+  align-self: flex-end;
+  margin-top: 10px;
+  margin: 10px 0;
   border: none;
   background-color: rgb(22, 12, 40);
   color: white;

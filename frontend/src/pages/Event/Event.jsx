@@ -24,7 +24,7 @@ const Event = () => {
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/events/${id}/users`) // Fetch event users based on the event ID
+    fetch(`http://localhost:3000/events/${id}/users`)
       .then((resp) => resp.json())
       .then((response) => {
         console.log(response);
@@ -37,10 +37,10 @@ const Event = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await deleteUser(id, userId); // Pass both event ID and user ID
+      await deleteUser(id, userId);
       setEventUsers((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)
-      ); // Filter users based on user ID
+      );
     } catch (error) {
       console.error(error);
     }

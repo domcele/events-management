@@ -42,7 +42,7 @@ EventsRow.propTypes = {
     name: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    users: PropTypes.array.isRequired,
+    users: PropTypes.array,
     date: PropTypes.string.isRequired,
   }),
 };

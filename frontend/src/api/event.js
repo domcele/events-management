@@ -1,7 +1,5 @@
 import { API } from "./consts";
 
-// POST API/events
-
 export const createEvent = async (event) => {
   const response = await fetch(`${API}/events`, {
     method: "POST",
@@ -9,6 +7,17 @@ export const createEvent = async (event) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(event),
+  });
+  return await response.json();
+};
+
+export const updateEvent = async (id, updatedEvent) => {
+  const response = await fetch(`${API}/events/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedEvent),
   });
   return await response.json();
 };

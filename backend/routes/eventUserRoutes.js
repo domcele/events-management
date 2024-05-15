@@ -79,7 +79,6 @@ router.post("/:id/new-user", async (req, res) => {
   const userData = req.body;
 
   try {
-    // Check if the event exists
     const event = await client
       .db("MyDatabase")
       .collection("events")
@@ -88,14 +87,10 @@ router.post("/:id/new-user", async (req, res) => {
     if (!event) {
       return res.status(404).send({ error: "Event not found" });
     }
-
-    // Add the user to the users collection
     const result = await client
       .db("MyDatabase")
       .collection("users")
       .insertOne(userData);
-
-    // Update the event by pushing the new user's ObjectId into the users array
     await client
       .db("MyDatabase")
       .collection("events")
@@ -107,6 +102,30 @@ router.post("/:id/new-user", async (req, res) => {
     res.status(201).send({ message: "User added to event" });
   } catch (error) {
     res.status(500).send({ error: error.message });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedEvent = req.body;
+
+  try {
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send({ error: "Invalid event ID" });
+    }
+    const result = await client
+      .db("MyDatabase")
+      .collection("events")
+      .updateOne({ _id: new ObjectId(id) }, { $set: updatedEvent });
+
+    if (result.matchedCount === 0) {
+      return res.status(404).send({ error: "Event not found" });
+    }
+
+    res.status(200).send({ message: "Event updated successfully" });
+  } catch (error) {
+    console.error("Error updating event:", error);
+    res.status(500).send({ error: "Internal server error" });
   }
 });
 
@@ -127,13 +146,12 @@ router.delete("/:id/users/:userId", async (req, res) => {
   const { id, userId } = req.params;
 
   try {
-    // Remove the user ID from the users array of the event document
     const data = await client
       .db("MyDatabase")
       .collection("events")
       .updateOne(
         { _id: new ObjectId(id) },
-        { $pull: { users: new ObjectId(userId) } } // Assuming userId is stored as a string
+        { $pull: { users: new ObjectId(userId) } }
       );
 
     if (data.modifiedCount === 0) {

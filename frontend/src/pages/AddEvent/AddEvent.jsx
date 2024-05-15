@@ -10,12 +10,13 @@ const AddEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, date, location, price } = e.target;
+    const { name, date, location, price, image } = e.target;
     const event = {
       name: name.value,
       date: date.value,
       location: location.value,
       price: price.value,
+      image: image.value,
     };
     try {
       await createEvent(event);
@@ -29,19 +30,48 @@ const AddEvent = () => {
     <div className={styles.addEventContainer}>
       <form className={styles.addEventForm} onSubmit={handleSubmit}>
         <h2 className={styles.addEventTitle}>Add Event</h2>
-        <Input type="text" id="name" name="name" label="Name" required />
-        <Input type="date" id="date" name="date" label="Date" required />
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          label="Name"
+          onChange={() => {}}
+          required
+        />
+        <Input
+          type="date"
+          id="date"
+          name="date"
+          label="Date"
+          onChange={() => {}}
+          required
+        />
         <Input
           type="text"
           id="location"
           name="location"
           label="Location"
+          onChange={() => {}}
           required
         />
-        <Input type="number" id="price" name="price" label="Price" required />
-        <Input type="text" id="url" name="imgUrl" label="Image URL" required />
+        <Input
+          type="number"
+          id="price"
+          name="price"
+          label="Price"
+          onChange={() => {}}
+          required
+        />
+        <Input
+          type="text"
+          id="url"
+          name="image"
+          label="Image URL"
+          onChange={() => {}}
+          required
+        />
         <div className={styles.buttonContainer}>
-          <Button color="secondary" type="submit">
+          <Button color="secondary" type="submit" onClick={() => {}}>
             Create new Event
           </Button>
         </div>

@@ -32,19 +32,23 @@ const Login = () => {
           <Input
             type="email"
             id="email"
+            name="email"
             value={email}
+            label=""
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <Input
             type="password"
             id="password"
+            name="password"
+            label=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
           <div className={styles.buttonContainer}>
-            <Button color="secondary" type="submit">
+            <Button color="secondary" type="submit" onClick={() => {}}>
               Log In
             </Button>
           </div>

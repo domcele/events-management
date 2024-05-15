@@ -14,7 +14,7 @@ const Button = ({ onClick, children, color }) => {
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.oneOf(["primary", "secondary", "alert"]).isRequired,
+  color: PropTypes.oneOf(["primary", "secondary", "third", "alert"]).isRequired,
 };
 
 export default Button;
